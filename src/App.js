@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Navbar from "./Components/Navbar";
+import Addlist from "./Components/Addlist";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react';
+import ViewList from './Components/ViewList';
+
+
+library.add(fas)
+
 
 function App() {
+
+  const [notes,setNotes] = useState([])
+
+  
+  const getNotes = (note) => { 
+    setNotes((prev)=>{ return [...prev,note]})
+  }
+
+  const deleteNote =(id)=>{
+
+    const newNotes = notes.filter(note => { return note.id!==id;});
+    setNotes(newNotes)
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Navbar/>
+      <Addlist getNotes={getNotes} />
+      <ViewList notes={notes} deleteNote={deleteNote}/>
+    
     </div>
   );
 }

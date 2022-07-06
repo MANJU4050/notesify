@@ -1,0 +1,26 @@
+.viewlist{
+    min-height: 400px;
+    background-color: rgb(229, 229, 229);
+    margin: auto;
+    margin-top: 40px;
+    width: 98%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:stretch;
+    
+   
+}
+
+@media only screen  and (max-width: 600px){
+
+    .viewlist{
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+
+}
+    
